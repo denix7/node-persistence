@@ -8,16 +8,17 @@ const getTasks = (req, res) => {
 
 const createTask = (req, res) => {
 
-    res.send('its works');
     const newTask = {
         id: v4(),
         name: req.body.name,
         description: req.body.description
     };
-
+    
     getConnection().get('tasks')
     .push(newTask)
     .write();
+
+    res.send('task created');
 }
 
 const getTask = (req, res) => {
@@ -30,8 +31,36 @@ const getTask = (req, res) => {
     res.json(task);
 }
 
+const updateTask = async (req, res) => {
+    id = req.params.id;
+
+    const result = await getConnection().get('tasks')
+    .find({id: id})
+    .assign(req.body)
+    .write();
+
+    res.json({
+        message: 'task updated successfully',
+        task: result
+    });
+}
+
+const deleteTask = (req, res) => {
+    id = req.params.id;
+
+    getConnection().get('tasks')
+    .remove({id: id})
+    .write()
+
+    res.json({
+        message: 'Deleted successfully'
+    });
+}
+
 module.exports = {
     getTasks,
     createTask,
-    getTask
+    getTask,
+    updateTask,
+    deleteTask
 }
