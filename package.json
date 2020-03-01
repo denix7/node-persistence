@@ -1,0 +1,27 @@
+{
+  "name": "persistenence",
+  "version": "1.0.0",
+  "description": "lowDB node",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js --ignore db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denix7/node-persistence.git"
+  },
+  "author": "dennis padilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denix7/node-persistence/issues"
+  },
+  "homepage": "https://github.com/denix7/node-persistence#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "uuid": "^7.0.1"
+  }
+}
